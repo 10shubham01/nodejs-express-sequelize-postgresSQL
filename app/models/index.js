@@ -1,10 +1,10 @@
-const dbConfig = require("../config/db.config.js");
-
+const dbConfig = require("../config/db.config");
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.URL, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
-  operatorsAliases: false,
+  operatorsAliases: 0,
+
   pool: {
     max: dbConfig.pool.max,
     min: dbConfig.pool.min,
@@ -12,12 +12,16 @@ const sequelize = new Sequelize(dbConfig.URL, {
     idle: dbConfig.pool.idle,
   },
 });
-
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("<--------Connected ------>");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 const db = {};
-
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-
-db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
-
+db.marvel = require("./marvel.model")(sequelize, Sequelize);
 module.exports = db;
