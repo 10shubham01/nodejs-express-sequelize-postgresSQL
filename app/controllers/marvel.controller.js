@@ -64,3 +64,26 @@ exports.findOne = (req, res) => {
       });
     });
 };
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  Marvel.update(req.body, {
+    where: { id: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Character was updated successfully.",
+        });
+      } else {
+        res.send({
+          message: `Cannot update Character with id=${id}. Maybe Character was not found or req.body is empty!`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error updating Character with id=" + id,
+      });
+    });
+};
