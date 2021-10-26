@@ -5,13 +5,22 @@ module.exports = (sequelize, Sequelize) => {
       Character_name: {
         type: Sequelize.STRING,
       },
-      Actor_name: {
+      Superpowers: {
         type: Sequelize.STRING,
       },
-      description: {
+      Year_Created: {
+        type: Sequelize.INTEGER,
+      },
+      Description: {
+        type: Sequelize.STRING(1234),
+      },
+      How_he_got_his_Power: {
         type: Sequelize.STRING,
       },
-      Power: {
+      Weapons: {
+        type: Sequelize.STRING,
+      },
+      Did_You_Know: {
         type: Sequelize.STRING,
       },
     },

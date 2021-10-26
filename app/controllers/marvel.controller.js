@@ -11,9 +11,12 @@ exports.create = (req, res) => {
   }
   const Character = {
     Character_name: req.body.Character_name,
-    Actor_name: req.body.Actor_name,
-    description: req.body.description,
-    Power: req.body.Power,
+    Superpowers: req.body.Superpowers,
+    Description: req.body.Description,
+    Year_Created: req.body.Year_Created,
+    How_he_got_his_Power: req.body.How_he_got_his_Power,
+    Weapons: req.body.Power,
+    Did_You_Know: req.body.Power,
   };
   Marvel.create(Character)
     .then((data) => {
@@ -28,8 +31,10 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  const title = req.query.Character_name;
+  var condition = Character_name
+    ? { titlCharacter_namee: { [Op.like]: `%${title}%` } }
+    : null;
   Marvel.findAll({ where: condition })
     .then((data) => {
       res.send(data);
