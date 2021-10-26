@@ -1,3 +1,4 @@
+const { marvel } = require("../models");
 const db = require("../models");
 const Marvel = db.marvel;
 const Op = db.Sequelize.Op;
@@ -15,8 +16,8 @@ exports.create = (req, res) => {
     Description: req.body.Description,
     Year_Created: req.body.Year_Created,
     How_he_got_his_Power: req.body.How_he_got_his_Power,
-    Weapons: req.body.Power,
-    Did_You_Know: req.body.Power,
+    Weapons: req.body.Weapons,
+    Did_You_Know: req.body.Did_You_Know,
   };
   Marvel.create(Character)
     .then((data) => {
@@ -24,16 +25,15 @@ exports.create = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Tutorial.",
+        message: err.message || "Some error occurred while Adding a character.",
       });
     });
 };
 
 exports.findAll = (req, res) => {
-  const title = req.query.Character_name;
+  const Character_name = req.query.Character_name;
   var condition = Character_name
-    ? { titlCharacter_namee: { [Op.like]: `%${title}%` } }
+    ? { Character_name: { [Op.like]: `%${Character_name}%` } }
     : null;
   Marvel.findAll({ where: condition })
     .then((data) => {
@@ -42,7 +42,25 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials.",
+          err.message || "Some error occurred while retrieving character.",
+      });
+    });
+};
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+  Marvel.findByPk(id)
+    .then((data) => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Character with id=${id}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving Character with id=" + id,
       });
     });
 };
