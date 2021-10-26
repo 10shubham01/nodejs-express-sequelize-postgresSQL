@@ -4,6 +4,7 @@ module.exports = (app) => {
   var router = require("express").Router();
 
   router.get("/", marvel.findAll);
+  router.post("/", marvel.create);
 
   app.use("/api/marvel", router);
 };
