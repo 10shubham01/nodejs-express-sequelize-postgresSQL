@@ -1,6 +1,5 @@
 const db = require("../models");
 const Marvel = db.marvel;
-
 module.exports = {
   create: (req, res) => {
     if (!req.body.Character_name) {
@@ -110,10 +109,11 @@ module.exports = {
   deleteAll: (req, res) => {
     Marvel.destroy({
       where: {},
-      truncate: false,
+      truncate: true,
+      restartIdentity: true,
     })
       .then((nums) => {
-        res.send({ message: `${nums} Characters were deleted successfully!` });
+        res.send({ message: "All Characters were deleted successfully!" });
       })
       .catch((err) => {
         res.status(500).send({
