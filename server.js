@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Shubham application." });
 });
 require("./app/routes/marvel.routes")(app);
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3009;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

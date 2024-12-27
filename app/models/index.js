@@ -1,9 +1,15 @@
 require("dotenv").config();
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(process.env.DB_URL, {
-  host: process.env.DB_HOST,
+  host: "postgresql",
   operatorsAliases: 0,
   dialect: "postgres",
+   dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
   pool: {
     max: 5,
     min: 0,
