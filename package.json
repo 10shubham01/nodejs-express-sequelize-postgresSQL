@@ -2,9 +2,9 @@
   "name": "postgres-sql-nodejs",
   "version": "1.0.0",
   "description": "Node.js Rest Apis with Express, Sequelize & PostgresSQL",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server"
+    "start": "node index"
   },
   "author": "",
   "license": "ISC",
