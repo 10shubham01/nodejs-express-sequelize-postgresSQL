@@ -4,7 +4,7 @@
   "description": "Node.js Rest Apis with Express, Sequelize & PostgresSQL",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server"
   },
   "author": "",
   "license": "ISC",
