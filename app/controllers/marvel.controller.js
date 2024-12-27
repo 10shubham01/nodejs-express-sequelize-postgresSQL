@@ -10,6 +10,7 @@ module.exports = {
     }
     const Character = {
       Character_name: req.body.Character_name,
+      Character_name: req.body.Character_name,
       Superpowers: req.body.Superpowers,
       Description: req.body.Description,
       Year_Created: req.body.Year_Created,

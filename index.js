@@ -13,8 +13,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Shubham application." });
 });
-require("./app/routes/marvel.routes")(app);
-const PORT = process.env.PORT || 3009;
+// require("./app/routes/marvel.routes")(app);
+const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
